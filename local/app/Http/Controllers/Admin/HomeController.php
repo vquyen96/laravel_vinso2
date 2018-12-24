@@ -15,6 +15,7 @@ class HomeController extends Controller
 {
     public $view_id;
     public function getHome(Request $request){
+        return redirect('admin/articel');
         // return redirect('admin/articel');
         $req = $request->all();
 
