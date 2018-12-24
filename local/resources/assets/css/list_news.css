@@ -1,0 +1,28 @@
+
+
+
+section {
+    padding-top: 100px;
+}
+section h1{
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+a.newsItemImg {
+    display: block;
+}
+.newsItemImg:after {
+    content: '';
+    display: block;
+    padding-bottom: 72%;
+}
+a.newsItemTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+}
+.newsItemSummnary {
+     font-size: 14px;
+     color: #666;
+}

@@ -1,0 +1,35 @@
+footer {
+	background: #211d1e;
+}
+.footerItem {
+	padding: 60px 0;
+	color: #fff;
+	font-size: 14px;
+}
+.footerItem>div {
+	width: 80%;
+}
+.footerItemTitle {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.footerBot {
+	display: flex;
+	color: #fff;
+	justify-content: space-between;
+	line-height: 34px;
+}
+.footerBotRight {
+	display: flex;
+}
+.footerBotRightContent {
+	padding: 0 15px;
+}
+a.footerBotRightLink {
+	margin-left: 1px;
+}
+.footerItem a {
+	color: #fff;
+	text-decoration: none;
+}

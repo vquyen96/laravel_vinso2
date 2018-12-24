@@ -1,0 +1,14 @@
+header {
+	height: 42px;
+	line-height: 42px;
+	background: #444;
+}
+.headerMain {
+	display: flex;
+	justify-content: space-between;
+}
+a.headerMainItem {
+	color: #fff;
+	/* flex: 1; */
+	text-transform: uppercase;
+}

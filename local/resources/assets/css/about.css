@@ -1,0 +1,152 @@
+.bannerHeaderMainLogo {
+    margin: 20px 0 60px;
+}
+
+.bannerHeaderMainTitle {
+    font-size: 40px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.bannerHeaderMainBreadcrumb {
+    display: flex;
+    margin-bottom: 70px;
+}
+.breadcrumbItem a {
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.breadcrumbItem:after {
+    content: '/';
+    margin: 0 15px;
+}
+.breadcrumbItem:last-child:after {
+    content: '';
+    display: inline-block;
+}
+
+section {
+    padding-top: 100px;
+}
+
+.welcome {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 68px;
+}
+.welcomeItem {
+    width: 47%;
+}
+.welcomeItemBigTitle {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.welcomeItemTitle {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.welcomeItemContent {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.list_vinso_item {
+    display: flex;
+    margin-bottom: 10px;
+    line-height: 28px;
+}
+.list_vinso_item_icon {
+    width: 50px;
+}
+.list_vinso_item_icon img {
+    width: 28px;
+}
+
+
+.welcomeNav {
+    display: flex;
+    border-top: 2px solid #da0f26;
+    margin-bottom: 35px;
+}
+.welcomeItemNav {
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 52px;
+    cursor: pointer;
+}
+.welcomeItemNav.active {
+    background: #da0f26;
+    color: #fff;
+}
+.welcomeItemNavContent ul{
+    padding: 0;
+}
+.welcomeItemNavContent ul li {
+    list-style: none;
+    margin-bottom: 20px;
+}
+.welcomeItemNavContent ul li::before {
+    content: '• ';
+    color: #959595;
+    margin-right: 20px;
+}
+.welcomeItemNavContent:last-child {
+    display: none;
+}
+
+
+.borDer {
+    display: flex;
+    margin-bottom: 50px;
+}
+.borderLeft {
+    border-bottom: 1px solid #17223a;
+    width: 58px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+.borderRight {
+    border-bottom: 1px solid #d3d3d3;
+    flex: 1;
+}
+.certificationTitle{
+    margin-bottom: 40px
+}
+.certificationItemImg {
+    margin-bottom: 40px;
+}
+.certificationItemImg:after {
+    content: '';
+    display: block;
+    padding-bottom: 80%;
+}
+.certificationItemContent {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+
+
+.welcomeItemLine.d-flex {
+    padding: 15px 0;
+    border-top: 1px solid #c5c3c3;
+}
+.welcomeItemLineLeft {
+    width: 68px;
+}
+.welcomeItemLineRightTitle {
+    font-size: 18px;
+    font-weight: 600;
+}
+.welcomeItemLineRightContent {
+    font-size: 14px;
+    color: #7f7e7e;
+}
+.flex-fill {
+    -ms-flex: 1 !important;
+    flex: 1 !important;
+}
