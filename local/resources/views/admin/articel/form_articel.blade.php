@@ -222,43 +222,43 @@
                                         {{--</div>--}}
                                     {{--</div>--}}
                                     {{----}}
-                                    {{--<div class="row form-group">--}}
-                                        {{--<label class="col-sm-2">Tin liên quan</label>--}}
-                                        {{--<div class="col-sm-5">--}}
-                                            {{-- <select class="form-control select2" multiple="multiple" data-placeholder="Chọn tin liên quan" name="articel[relate][]"--}}
+                                    <div class="row form-group">
+                                        <label class="col-sm-2">Tin liên quan</label>
+                                        <div class="col-sm-5">
+                                             {{--<select class="form-control select2" multiple="multiple" data-placeholder="Chọn tin liên quan" name="articel[relate][]"--}}
                                                     {{--style="width: 100%;" id="relate">--}}
                                                 {{--@foreach($article_relate as $relate)--}}
                                                     {{--<option {{in_array($relate->id, $articel->relate) ? 'selected' : ''}} value="{{ $relate->id }}">{{ $relate->title }}</option>--}}
                                                 {{--@endforeach--}}
-                                            {{--</select> --}}
-                                            {{--<input type="text" name="articel[relate]" class="d-none" id="relate_input">--}}
-                                            {{--<input type="text" name="" class="form-control search_relate" placeholder="Tìm kiếm">--}}
-                                            {{--<div class="search_value">--}}
-                                                {{--@foreach ($list_article_relate as $item)--}}
-                                                    {{--<div class="search_value_item" value="{{ $item->id }}">--}}
-                                                        {{--{{ $item->title }}--}}
-                                                    {{--</div>--}}
-                                                {{--@endforeach--}}
-                                                {{-- <div class="search_value_item" value="352486">--}}
+                                            {{--</select>--}}
+                                            <input type="text" name="articel[relate]" class="d-none" id="relate_input">
+                                            <input type="text" name="" class="form-control search_relate" placeholder="Tìm kiếm">
+                                            <div class="search_value">
+                                                @foreach ($list_article_relate as $item)
+                                                    <div class="search_value_item" value="{{ $item->id }}">
+                                                        {{ $item->title }}
+                                                    </div>
+                                                @endforeach
+                                                 {{--<div class="search_value_item" value="352486">--}}
                                                     {{--OKe oke oke--}}
-                                                {{--</div> --}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-sm-5">--}}
-                                            {{--<div class="relate_select">--}}
-                                                {{--@foreach ($article_relate as $item)--}}
-                                                    {{--<div class="relate_select_item" value="{{ $item->id }}">--}}
-                                                        {{--<i class="fas fa-times"></i>--}}
-                                                        {{--{{ $item->title }}--}}
-                                                    {{--</div>--}}
-                                                {{--@endforeach--}}
-                                                {{-- <div class="relate_select_item" value="1">--}}
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="relate_select">
+                                                @foreach ($article_relate as $item)
+                                                    <div class="relate_select_item" value="{{ $item->id }}">
+                                                        <i class="fas fa-times"></i>
+                                                        {{ $item->title }}
+                                                    </div>
+                                                @endforeach
+                                                 {{--<div class="relate_select_item" value="1">--}}
                                                     {{--<i class="fas fa-times"></i>--}}
                                                     {{--Hêllo--}}
-                                                {{--</div> --}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
                                     {{--<div class="row form-group">--}}
                                         {{--<label class="col-sm-2">Loại tin bài</label>--}}
                                         {{--<div class="col-sm-10">--}}
@@ -384,28 +384,28 @@
                 $('#hot-tiny').prop('disabled', true);
             }
         }
-        // $(document).on('change', '#group', function (e) {
-        //     var group_id = $(this).val();
+        $(document).on('change', '#group', function (e) {
+            var group_id = $(this).val();
             
 
-        //     e.preventDefault();
-        //     $.ajax({
-        //         url: url+'/admin/articel/get_relate/'   ,
-        //         method: 'get',
-        //         dataType: 'json',
-        //     }).fail(function (ui, status) {
-        //         console.log('error');
-        //     }).done(function (data, status) {
-        //         console.log(data.content);
-        //         if(data.content){
-        //             console.log(data.content);
-        //             setTimeout(function () {
-        //                 $('#relate').html(data.content);
-        //                 // $('#relate').selectpicker('refresh');
-        //             },200);
-        //         }
-        //     })
-        // });
+            e.preventDefault();
+            $.ajax({
+                url: url+'/admin/articel/get_relate/'   ,
+                method: 'get',
+                dataType: 'json',
+            }).fail(function (ui, status) {
+                console.log('error');
+            }).done(function (data, status) {
+                console.log(data.content);
+                if(data.content){
+                    console.log(data.content);
+                    setTimeout(function () {
+                        $('.search_value').html(data.content);
+                        // $('#relate').selectpicker('refresh');
+                    },200);
+                }
+            })
+        });
         
         
     </script>

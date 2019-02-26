@@ -49,3 +49,13 @@
 .et-blog-smlastest-post.et-inner-box, .et-quote.et-inner-box {
 	margin-bottom: 40px;
 }
+
+.et-blog-cntnt a.relate_item{
+	font-size: 13px;
+	color: #007bff;
+	margin-bottom: 10px;
+	display: block;
+}
+.et-blog-cntnt a.relate_item i{
+	margin-right: 10px;
+}

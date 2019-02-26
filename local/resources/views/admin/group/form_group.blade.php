@@ -115,7 +115,7 @@
                                     <input class="d-none" name="group[avatar]" value="{{$group->avatar}}" id="src_avatar" type="text">
                                 </div>
                             </div> --}}
-                            <div class="row form-group">
+                            <div class="row form-group d-none">
                                 <label class="col-sm-2">Link Icon (fontawesome.com)</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="group[fimages]" class="form-control" placeholder='VD: <i class="fab fa-youtube"></i>' value="{{$group->fimages}}">
@@ -155,7 +155,7 @@
                 </div>
               </div>
             </div>
-            <div class="row {{ $group->id ? '' : 'd-none' }}">
+            <div class="row {{ $group->id ? '' : 'd-none' }} d-none">
               <!-- left column -->
               <div class="col-md-12 col-sm-12">
                 <div class="card card-danger">

@@ -717,9 +717,11 @@ class ArticelController extends Controller
                 return redirect('admin/articel');
             }
             $article_user = Account::find($article_model->userid);
-            if ($article_user == null) return back()->with('error', 'Bản ghi bị lỗi');
+            if ($article_user == null) {
+                $article_user = Auth::user();
+//                return back()->with('error', 'Bản ghi bị lỗi');
+            }
             $article_group_ids = explode(',',$article_user->group_id);
-            // dd($article_group_ids );
 
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
 //            if(in_array(0, $article_group_ids)){
@@ -2142,28 +2144,26 @@ class ArticelController extends Controller
         }
     }
 
-
-
-    // public function  get_relate(){
-    //     $group_id = Input::get('groupid');
-        
-    //     $group =  Group_vn::find($group_id);
-    //     if ($group->parentid == 0) {
-    //         $group_child = Group_vn::where('parentid', $group_id)->where('status',1)->get(['id'])->toArray();
-    //         $list_article = DB::table($this->db->news)->whereIn('groupid',$group_child )->where('status',1)->where('release_time', '<=', time())->orderByDesc('id')->get();
-            
-    //     }else{
-    //         $list_article = DB::table($this->db->news)->whereIn('groupid',[$group_id])->where('status',1)->where('release_time', '<=', time())->orderByDesc('id')->get();
-    //     }        
-
-    //     $data = [
-    //         'list_article' => $list_article
-    //     ];
-
-    //     $view = View::make('admin.articel.relate',$data)->render();
-    //     return response($view, 200);
-       
-    // }
+//     public function get_relate(){
+//         $group_id = Input::get('groupid');
+//
+//         $group =  Group_vn::find($group_id);
+//         if ($group->parentid == 0) {
+//             $group_child = Group_vn::where('parentid', $group_id)->where('status',1)->get(['id'])->toArray();
+//             $list_article = DB::table($this->db->news)->whereIn('groupid',$group_child )->where('status',1)->where('release_time', '<=', time())->orderByDesc('id')->get();
+//
+//         }else{
+//             $list_article = DB::table($this->db->news)->whereIn('groupid',[$group_id])->where('status',1)->where('release_time', '<=', time())->orderByDesc('id')->get();
+//         }
+//
+//         $data = [
+//             'list_article' => $list_article
+//         ];
+//
+//         $view = View::make('admin.articel.relate',$data)->render();
+//         return response($view, 200);
+//
+//     }
 
     public function  get_relate(){
         $search = Input::get('search');

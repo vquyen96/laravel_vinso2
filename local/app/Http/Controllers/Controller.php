@@ -29,8 +29,9 @@ class Controller extends BaseController
 
             $this->db = (object)$this->get_db();
 
-//            $this->menu = $this->get_menu_top();
-//            View::share('menu', $this->menu);
+            $this->menu = $this->get_menu_top();
+            View::share('menu', $this->menu);
+
 //
 //            if(Auth::user()){
 //                $level = Auth::user()->level;
@@ -63,9 +64,16 @@ class Controller extends BaseController
     }
 
     public function get_menu_top(){
-        $menu = DB::table($this->db->group)->where('status',1)->where('parentid',0)->orderBy('order')->get();
+        $menu = DB::table($this->db->group)
+            ->where('status',1)
+            ->where('parentid',0)
+            ->where('home_index',1)
+            ->orderBy('order')->get();
         foreach ($menu as $val){
             $val->child = DB::table($this->db->group)->where('parentid',$val->id)->get();
+            foreach($val->child as $child) {
+                $child->child = DB::table($this->db->group)->where('parentid',$child->id)->get();
+            }
         }
         return $menu;
     }

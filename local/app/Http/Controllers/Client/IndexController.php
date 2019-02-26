@@ -86,8 +86,23 @@ class IndexController extends Controller
 
 //        dd(time() + 86400*30);
 //        dd($data);
-        $list = DB::table($this->db->news)->where('hot_main', 1)->where('release_time', '<=', time())->where('status',1)->orderBy('order_main')->take(5 )->get();
-        $list_news = DB::table($this->db->news)->where('groupid',1)->where('hot_item', 1)->where('status',1)->orderBy('order_item')->take(5 )->get();
+        $list = DB::table($this->db->news)->where('hot_main', 1)
+            ->where('release_time', '<=', time())
+            ->where('status',1)
+            ->orderBy('order_main')
+            ->take(5 )->get();
+        $list_news = DB::table($this->db->news)->where('groupid',1)
+            ->where('hot_item', 1)
+            ->where('status',1)
+            ->orderBy('order_item')
+            ->take(6 )->get();
+//        $groupid = 1;
+//        $group = DB::table($this->db->group)->find($groupid);
+//        $list_articel_new = DB::table($this->db->news)
+//            ->where('groupid', $groupid)
+//            ->where('status',1)
+//            ->orderBy('order_main')->orderBy('release_time','desc')->take(10)->get();
+//        $data['list'] = $list_articel_new;
         $data = [
             "list" => $list,
             "list_news" => $list_news,
@@ -142,8 +157,6 @@ class IndexController extends Controller
 //        $articel = News::find($slug[1]);
         $data = $this->getDetailById($slug[1]);
         return view('client.index.detail', $data);
-        dd($articel);
-
     }
 
 
@@ -166,6 +179,17 @@ class IndexController extends Controller
         $group_news = array_column(json_decode(json_encode($group_news),true),'id');
         $latestpost = DB::table($this->db->news)->take(3)->orderBy('id', 'desc')->get();
         $breadcrumb = $this->getBreadcrumb($group, $breadcrumb = []);
+
+        if ($new->relate != null) {
+            $relate_id = explode(',',$new->relate);
+            $relates = DB::table($this->db->news)->whereIn('id',$relate_id)->where('release_time','<=',time())->get();
+
+        }
+        else{
+            $relates = [];
+        }
+
+
         $data = [
             "news" => $new,
             "content" => $content,
@@ -173,6 +197,7 @@ class IndexController extends Controller
             "gr_childs" => $gr_childs,
             "group" => $group,
             "latestpost" => $latestpost,
+            "relates" => $relates,
             "breadcrumb" => array_reverse($breadcrumb)
 
 

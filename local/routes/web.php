@@ -41,7 +41,7 @@ Route::group(['namespace' => 'Client'],function (){
     Route::get('news/{slug}', 'IndexController@detailnews');
     Route::get('quality/{slug}', 'IndexController@detailnews');
     Route::get('recruit/{slug}', 'IndexController@detailnews');
-    Route::get('document/{slug}', 'IndexController@detailnews');
+    Route::get('document /{slug}', 'IndexController@detailnews');
     Route::post('search', 'IndexController@getSearch');
 
 

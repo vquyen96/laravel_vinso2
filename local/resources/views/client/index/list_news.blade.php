@@ -37,7 +37,7 @@
             </div>
         </div>
         <section>
-            <div class="container">
+            <div class="container pt-100">
                 <div class="row">
                     <div class="col-12 text-center mb-3 txt40_20">
                         <h1>List {{ $group->title }}</h1>

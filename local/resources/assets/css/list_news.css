@@ -1,12 +1,15 @@
 
 
 
-section {
+/*section {*/
+    /*padding-top: 100px;*/
+/*}*/
+/*section h1{*/
+    /*text-transform: uppercase;*/
+    /*margin-bottom: 20px;*/
+/*}*/
+.pt-100{
     padding-top: 100px;
-}
-section h1{
-    text-transform: uppercase;
-    margin-bottom: 20px;
 }
 a.newsItemImg {
     display: block;

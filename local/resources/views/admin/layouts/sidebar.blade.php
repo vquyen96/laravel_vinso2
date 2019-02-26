@@ -84,11 +84,10 @@
                                 <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đổi mật khẩu' : 'Change Password'}}</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
-                @if (Auth::user()->level < 3 && Auth::user()->site == 1)
-                    <li class="nav-item has-treeview d-none">
+                @if (Auth::user()->level < 3)
+                    <li class="nav-item has-treeview">
                         <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'group') active @endif" >
                             <i class="nav-icon fas fa-ellipsis-h"></i>
                             <p>
@@ -97,23 +96,19 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            @if (Auth::user()->site == 1)
-                                <li class="nav-item">
-                                    <a href="{{route('form_sort_group','00')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Sắp xếp trang chủ' : 'Sort Categories'}}</p>
-                                    </a>
-                                </li>
-                            @endif
+                            <li class="nav-item">
+                                <a href="{{route('form_sort_group','00')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Sắp xếp trang chủ' : 'Sort Categories'}}</p>
+                                </a>
+                            </li>
 
-                            {{--@if (Auth::user()->site == 1)--}}
-                                {{--<li class="nav-item">--}}
-                                    {{--<a href="{{route('form_sort_group_category','00')}}" class="nav-link">--}}
-                                        {{--<i class="fa fa-circle-o nav-icon"></i>--}}
-                                        {{--<p>Sắp xếp danh mục</p>--}}
-                                    {{--</a>--}}
-                                {{--</li>--}}
-                            {{--@endif--}}
+                            <li class="nav-item">
+                                <a href="{{route('form_sort_group_category','00')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Sắp xếp danh mục</p>
+                                </a>
+                            </li>
 
                             <li class="nav-item">
                                 <a href="{{route('admin_group')}}" class="nav-link">

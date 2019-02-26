@@ -93,6 +93,12 @@
                     <div class="col-md-8 et-pzero">
                         <div class="et-blog-col et-blg-grid">
                             <div class="et-blog-cntnt">
+                                @foreach($relates as $relate)
+                                    <a href="{{ asset('news/'.$relate->slug.'--n-'.$relate->id) }}" class="relate_item">
+                                        <i class="fas fa-caret-right"></i>
+                                        {{ $relate->title }}
+                                    </a>
+                                @endforeach
                                 {!! $content->noidung !!}
                                 <hr>
                             </div>
