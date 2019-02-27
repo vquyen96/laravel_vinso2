@@ -106,9 +106,9 @@
                                         </a>
 
                                     @endif
-                                    {{-- <a href="{{ asset('') }}">
+                                     <a href="{{ asset('') }}">
                                         <img src="images/728x90.png">
-                                    </a> --}}
+                                    </a>
                                 </div>
                             </div>
                         </div>

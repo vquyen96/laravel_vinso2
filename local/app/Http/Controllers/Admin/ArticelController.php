@@ -658,7 +658,15 @@ class ArticelController extends Controller
         // else{
         //     $article_relate = DB::table($this->db->news)->where('status', 1)->where('release_time', '<=', time())->whereIn('groupid', $group_ids)->orderByDesc('id')->get();
         // }
-        
+
+        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
+        $root = [
+            'id' => 0,
+            'title' => 'root'
+        ];
+        $result[] = (object)$root;
+        $this->recusiveGroup($list_group,0,"",$result);
+
         $article_relate = [];
         $list_article_relate = DB::table($this->db->news)->where('status', 1)->where('release_time', '<=', time())->orderByDesc('id')->take(5)->get();
         if($id == 0){
@@ -672,7 +680,7 @@ class ArticelController extends Controller
             }
 
             if (count($list_group)){
-                 // $this->recusiveGroup($list_group,0,"",$result);
+                $this->recusiveGroup($list_group,0,"",$result);
                 foreach ($list_group as $group) {
                     if ($group->parentid == 0) {
                         $result[] = $group;
@@ -706,7 +714,8 @@ class ArticelController extends Controller
                 'hot_tiny' => 0,
                 'time_hot_tiny' => 0,
                 'loaitinbai' => 0,
-                'status' => 5
+                'status' => 5,
+                'link' => ''
             ];
             $article = (object)$data;
         }else{
@@ -736,7 +745,7 @@ class ArticelController extends Controller
             
             // $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
             if (count($list_group)){
-                 // $this->recusiveGroup($list_group,0,"",$result);
+                $this->recusiveGroup($list_group,0,"",$result);
                 foreach ($list_group as $group) {
                     if ($group->parentid == 0) {
                         $result[] = $group;
@@ -932,8 +941,8 @@ class ArticelController extends Controller
         // Start transaction
         DB::beginTransaction();
         $check = 1;
-        
-        if($data['id'] == 0){ //Tạo mới bài viết
+        //Tạo mới bài viết
+        if($data['id'] == 0){
             unset($data['send']);
 
             if(!isset($data['hot_main'])) {
@@ -962,8 +971,6 @@ class ArticelController extends Controller
                 $data['order_item'] = 1;
                 $data['time_hot_tiny'] = round($data['time_hot_tiny'] ? $data['release_time'] + $data['time_hot_tiny']*3600 : $data['release_time'] + 86400*2);
             }
-
-
             $data['status'] = $status;
             $data['created_at'] = time();
             
@@ -1060,7 +1067,7 @@ class ArticelController extends Controller
                 $data['time_hot_main'] = 0;
             }
             else {
-                $data['order_main'] = 1;
+                if ($articel->hot_main == 0)  $data['order_main'] = 1 ;
                 $data['time_hot_main'] = round($data['time_hot_main'] ? time() + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
             }
 

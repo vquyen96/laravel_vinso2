@@ -25,23 +25,16 @@ Route::group(['namespace' => 'Client'],function (){
     });
 
     Route::group(['prefix' => 'group'],function(){
-        Route::get('/{slug}','GroupController@get_articel_by_group')->name('get_articel_by_group');
+        Route::get('/{slug}','IndexController@listnews')->name('client.group');
     });
     Route::get('/open_video/{id}','VideosController@open_video')->name('open_video');
 
     Route::post('ad_view', 'IndexController@ad_view');
     Route::post('article_view', 'IndexController@article_view');
 
-    Route::get('about', 'IndexController@about');
-    Route::get('contact', 'IndexController@contact');
-    Route::get('news', 'IndexController@listnews');
-    Route::get('quality', 'IndexController@listnews');
-    Route::get('recruit', 'IndexController@listnews');
-    Route::get('document', 'IndexController@listnews');
-    Route::get('news/{slug}', 'IndexController@detailnews');
-    Route::get('quality/{slug}', 'IndexController@detailnews');
-    Route::get('recruit/{slug}', 'IndexController@detailnews');
-    Route::get('document /{slug}', 'IndexController@detailnews');
+    Route::get('about', 'IndexController@about')->name('client.about');
+    Route::get('contact', 'IndexController@contact')->name('client.contact');
+    Route::get('detail/{slug}', 'IndexController@detailnews')->name('client.detail');
     Route::post('search', 'IndexController@getSearch');
 
 

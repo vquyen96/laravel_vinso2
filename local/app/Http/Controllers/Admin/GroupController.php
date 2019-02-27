@@ -87,7 +87,7 @@ class GroupController extends Controller
 
     public function form_group($id){
         if (Auth::check() && Auth::user()->site == 1) {
-           $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
             $root = [
                 'id' => 0,
                 'title' => 'root'

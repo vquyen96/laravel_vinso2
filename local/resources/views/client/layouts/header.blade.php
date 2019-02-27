@@ -5,21 +5,21 @@
                 <div class="headerMain">
                     <ul>
                         <li>
-                            <a href="{{ asset('/') }}" class="headerMainItem">
+                            <a href="{{ route('home') }}" class="headerMainItem">
                                 home
                             </a>
                         </li>
                         @foreach($menu as $root)
                             <li>
-                                <a href=""  class="headerMainItem">{{ $root->title }}</a>
+                                <a href="{{ route('client.group', $root->slug.'--n-'.$root->id) }}"  class="headerMainItem">{{ $root->title }}</a>
                                 <ul>
                                     @foreach($root->child as $child)
                                     <li>
-                                        <a href=""  class="">{{ $child->title }}</a>
+                                        <a href="{{ route('client.group', $child->slug.'--n-'.$child->id) }}"  class="">{{ $child->title }}</a>
                                         <ul>
                                             @foreach($child->child as $item)
                                                 <li>
-                                                    <a href=""  class="">{{ $child->title }}</a>
+                                                    <a href="{{ route('client.group', $item->slug.'--n-'.$item->id) }}"  class="">{{ $item->title }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>

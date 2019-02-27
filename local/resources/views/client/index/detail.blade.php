@@ -15,7 +15,7 @@
                     <div class="col-12">
                         <div class="bannerHeaderMain">
                             <div class="bannerHeaderMainLogo">
-                                <a href="">
+                                <a href="{{ route('home') }}">
                                     <img src="images/Logo.png" alt="">
                                 </a>
                             </div>
@@ -66,7 +66,7 @@
                             <h3 class="et-popular-categori-ttl text-uppercase titleCustom"><i class="pe-7s-paper-plane"></i> CATEGORY</h3>
                             <ul class="list-unstyled">
                                 @foreach( $gr_childs as $gr)
-                                    <li><p><a href="{{ $gr->link == null ? asset('group/'.$gr->slug.'--n-'.$gr->id) : $gr->link }}" {{ $gr->link == null ? '' : 'target="_blank"' }} >{{ $gr->title }}</a></p></li>
+                                    <li><p><a href="{{ $gr->link == null ? route('client.group', $gr->slug.'--n-'.$gr->id) : $gr->link }}" {{ $gr->link == null ? '' : 'target="_blank"' }} >{{ $gr->title }}</a></p></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -75,12 +75,12 @@
                             @foreach($latestpost as $news)
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="{{ asset('news/'.$news->slug.'--n-'.$news->id) }}" style="background: url('{{ asset('local/storage/app/article/resized200-'.$news->fimage) }}') no-repeat center /cover;">
+                                        <a href="{{ $news->link != null ? $news->link : route('client.detail', $news->slug.'--n-'.$news->id) }}" style="background: url('{{ asset('local/storage/app/article/resized200-'.$news->fimage) }}') no-repeat center /cover;">
                                             {{--<img class="media-object" src="{{ asset('local/storage/app/article/resized200-'.$news->fimage) }}" alt="{{ $news->title }}.jpg">--}}
                                         </a>
                                     </div>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><a href="{{ asset('news/'.$news->slug.'--n-'.$news->id) }}">{{ $news->title }}</a> </h5>
+                                        <h5 class="media-heading"><a href="{{ $news->link != null ? $news->link : route('client.detail', $news->slug.'--n-'.$news->id) }}">{{ $news->title }}</a> </h5>
                                         <h6 class="et-bsmp-ttl">{{ date('d M Y',$news->created_at) }}</h6>
                                         {{--<a class="et-bsmpa" href="{{ asset('detail/'.$news->slug.'--n-'.$news->id) }}">readmore</a>--}}
                                     </div>
@@ -94,7 +94,7 @@
                         <div class="et-blog-col et-blg-grid">
                             <div class="et-blog-cntnt">
                                 @foreach($relates as $relate)
-                                    <a href="{{ asset('news/'.$relate->slug.'--n-'.$relate->id) }}" class="relate_item">
+                                    <a href="{{ $relate->link != null ? $relate->link : route('client.detail', $relate->slug.'--n-'.$relate->id) }}" class="relate_item">
                                         <i class="fas fa-caret-right"></i>
                                         {{ $relate->title }}
                                     </a>

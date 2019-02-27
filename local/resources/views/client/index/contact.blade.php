@@ -13,7 +13,7 @@
                     <div class="col-12">
                         <div class="bannerHeaderMain">
                             <div class="bannerHeaderMainLogo">
-                                <a href="">
+                                <a href="{{ route('home') }}">
                                     <img src="images/Logo.png" alt="">
                                 </a>
                             </div>
@@ -24,10 +24,10 @@
                             </div>
                             <div class="bannerHeaderMainBreadcrumb">
                                 <div class="breadcrumbItem">
-                                    <a href="">Home</a>
+                                    <a href="{{ route('home') }}">Home</a>
                                 </div>
                                 <div class="breadcrumbItem">
-                                    <a href="">Contact</a>
+                                    <a href="{{ route('client.contact') }}">Contact</a>
                                 </div>
                             </div>
                         </div>

@@ -91,7 +91,7 @@ class IndexController extends Controller
             ->where('status',1)
             ->orderBy('order_main')
             ->take(5 )->get();
-        $list_news = DB::table($this->db->news)->where('groupid',1)
+        $list_news = DB::table($this->db->news)->where('groupid',29)
             ->where('hot_item', 1)
             ->where('status',1)
             ->orderBy('order_item')
@@ -128,23 +128,10 @@ class IndexController extends Controller
         ];
         return view('client.index.contact', $data);
     }
-    public function listnews(Request $request){
-        switch (request()->segment(1)){
-            case 'news':
-                $groupid = 1;
-                break;
-            case 'quality':
-                $groupid = 2;
-                break;
-            case 'recruit':
-                $groupid = 3;
-                break;
-            default:
-                $groupid = 4;
-                break;
-        }
-        $group = DB::table($this->db->group)->find($groupid);
-        $list_articel_new = DB::table($this->db->news)->where('groupid', $groupid)->where('status',1)->orderBy('order_main')->orderBy('release_time','desc')->take(10)->get();
+    public function listnews($slug){
+        $groupIds = explode('--n-', $slug);
+        $group = DB::table($this->db->group)->find($groupIds[1]);
+        $list_articel_new = DB::table($this->db->news)->where('groupid', $group->id)->where('status',1)->orderBy('order_main')->orderBy('release_time','desc')->take(10)->get();
         $data = [
             "list" => $list_articel_new,
             "group" => $group

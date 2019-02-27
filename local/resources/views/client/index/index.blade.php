@@ -14,7 +14,7 @@
                         <div class="bannerHeaderHomeBig">
                             <div class="bannerHeaderHomeTop">
                                 <div class="bannerHeaderHomeTopItem">
-                                    <a href="#">
+                                    <a href="{{ route('home') }}">
                                         <img src="images/Logo.png" alt="">
                                     </a>
                                 </div>
@@ -91,8 +91,8 @@
                     @foreach( $list_news as $item)
                         <div class="col-md-4 col-sm-6 col-xs-1">
                             <div class="newsItem mb-5">
-                                <a href="{{ asset('news/'.$item->slug.'--n-'.$item->id) }}" class="newsItemImg mb-2" style="background: url('{{ asset('local/storage/app/article/resized500-'.$item->fimage) }}') no-repeat center /cover"></a>
-                                <a href="{{ asset('news/'.$item->slug.'--n-'.$item->id) }}" class="newsItemTitle">
+                                <a href="{{ $item->link != null ? $item->link : route('client.detail', $item->slug.'--n-'.$item->id) }}" class="newsItemImg mb-2" style="background: url('{{ asset('local/storage/app/article/resized500-'.$item->fimage) }}') no-repeat center /cover"></a>
+                                <a href="{{ $item->link != null ? $item->link : route('client.detail', $item->slug.'--n-'.$item->id) }}" class="newsItemTitle">
                                     {{ $item->title }}
                                 </a>
                                 <div class="newsItemSummnary">
@@ -114,7 +114,7 @@
                     {{ $list[1]->summary }}
                 </div>
                 <div class="btnReacmore">
-                    <a href="{{ asset('quality/'.$list[1]->slug.'--n-'.$list[1]->id) }}" class="btnRed">
+                    <a href="{{ $list[1]->link != null ? $list[1]->link : route('client.detail', $list[1]->slug.'--n-'.$list[1]->id) }}" class="btnRed">
                         read more
                     </a>
                 </div>
@@ -131,7 +131,7 @@
                     {{ $list[2]->summary }}
                 </div>
                 <div class="btnReacmore">
-                    <a href="{{ asset('quality/'.$list[1]->slug.'--n-'.$list[2]->id) }}" class="btnRed">
+                    <a href="{{ $list[2]->link != null ? $list[2]->link : route('client.detail', $list[2]->slug.'--n-'.$list[2]->id) }}" class="btnRed">
                         read more
                     </a>
                 </div>
@@ -151,7 +151,7 @@
                                 {{ $list[3]->summary }}
                             </div>
                             <div class="btnReacmore ">
-                                <a href="{{ asset('quality/'.$list[3]->slug.'--n-'.$list[3]->id) }}" class="btnRed">
+                                <a href="{{ $list[3]->link != null ? $list[3]->link : route('client.detail', $list[3]->slug.'--n-'.$list[3]->id) }}" class="btnRed">
                                     read more
                                 </a>
                             </div>
@@ -171,7 +171,7 @@
                     {{ $list[4]->summary }}
                 </div>
                 <div class="btnReacmore">
-                    <a href="{{ asset('quality/'.$list[4]->slug.'--n-'.$list[4]->id) }}" class="btnRed">
+                    <a href="{{ $list[4]->link != null ? $list[4]->link : route('client.detail', $list[4]->slug.'--n-'.$list[4]->id) }}" class="btnRed">
                         read more
                     </a>
                 </div>
@@ -183,8 +183,13 @@
                 <div class="txt40_20 sectionMainTitle">
                     {{ $web_info->home2 }}
                 </div>
-                <div class="sectionMainContent">
+                <div class="sectionMainContent mb-5">
                     {{ $web_info->home3 }}
+                </div>
+                <div class="btnReacmore d-flex justify-content-center">
+                    <a href="{{ $web_info->home_link1 }}" class="btnRed">
+                        read more
+                    </a>
                 </div>
             </div>
         </section>
@@ -197,7 +202,7 @@
                                 <div class="txt30_15">
                                     {{ $item->title }}
                                 </div>
-                                <a href="{{ asset('news/'.$item->slug.'--n-'.$item->id) }}">
+                                <a href="{{ $item->link != null ? $item->link : route('client.detail', $item->slug.'--n-'.$item->id) }}">
                                     learn more
                                 </a>
                             </div>

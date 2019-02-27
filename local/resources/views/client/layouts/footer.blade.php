@@ -50,16 +50,23 @@
             <div class="col-sm-4 col-12">
                 <div class="footerItem">
                     <div class="footerItemTitle">
-                        {{ $web_info->footer_recruit_title }}
+                        {{ $web_info->footer_left_title }}
                     </div>
-                    @foreach( $recruits as $item)
                     <div class="mb-2">
-                        <a href="{{ asset('recruit/'.$item->slug.'--n-'.$item->id) }}">
-                            {{ $item->title }}
+                        <a href="{{ $web_info->footer_left_1_link }}">
+                            {{ $web_info->footer_left_1 }}
                         </a>
-
                     </div>
-                    @endforeach
+                    <div class="mb-2">
+                        <a href="{{ $web_info->footer_left_2_link }}">
+                            {{ $web_info->footer_left_2 }}
+                        </a>
+                    </div>
+                    <div class="mb-2">
+                        <a href="{{ $web_info->footer_left_3_link }}">
+                            {{ $web_info->footer_left_3 }}
+                        </a>
+                    </div>
                     {{--<div class="mb-2">--}}
                         {{--CNC Miller Programmer / Setter / Opearator--}}
                     {{--</div>--}}

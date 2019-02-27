@@ -283,6 +283,13 @@
                                             <input type="hidden" name="articel[send]" value="{{ $articel->status == 5 ? '1' : '' }}" class="form-control">
                                         </div>
                                     </div>
+                                    <div class="row form-group">
+                                        <label class="col-sm-2">Đường dẫn bài viết</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="articel[link]" required value="{{$articel->link}}"
+                                                   class="form-control" placeholder="Đường dẫn bài viết">
+                                        </div>
+                                    </div>
                                     <div class="box-footer">  
                                          
                                         <button type="submit" class="btn btn-info pull-right" style="margin-right: 10px">{{ $articel->id && $articel->status != 5 ? 'Cập nhật' : 'Tạo mới' }}</button>

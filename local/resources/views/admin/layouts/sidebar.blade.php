@@ -103,12 +103,12 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                <a href="{{route('form_sort_group_category','00')}}" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Sắp xếp danh mục</p>
-                                </a>
-                            </li>
+                            {{--<li class="nav-item">--}}
+                                {{--<a href="{{route('form_sort_group_category','00')}}" class="nav-link">--}}
+                                    {{--<i class="fa fa-circle-o nav-icon"></i>--}}
+                                    {{--<p>Sắp xếp danh mục</p>--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
 
                             <li class="nav-item">
                                 <a href="{{route('admin_group')}}" class="nav-link">
