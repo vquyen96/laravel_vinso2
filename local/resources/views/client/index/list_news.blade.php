@@ -56,6 +56,9 @@
                     </div>
                     @endforeach
                 </div>
+                <div class="d-flex justify-content-end mb-5">
+                    @include('client.tinypage.custom-paginate', ['paginator' => $list])
+                </div>
             </div>
         </section>
     </div>

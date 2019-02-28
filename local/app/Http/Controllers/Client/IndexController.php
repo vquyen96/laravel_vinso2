@@ -91,11 +91,22 @@ class IndexController extends Controller
             ->where('status',1)
             ->orderBy('order_main')
             ->take(5 )->get();
-        $list_news = DB::table($this->db->news)->where('groupid',29)
+        $listIds = $list->toArray();
+        $listIds = array_column(json_decode(json_encode($listIds),true),'id');
+
+        $list_news = DB::table($this->db->news)
+            ->where('status',1)
+            ->whereNotIn('id', $listIds)
+            ->orderByDesc('release_time')
+            ->take(6 )->get();
+
+        $trainings = DB::table($this->db->news)->where('groupid', $this->web_info()->home_group_id)
+            ->where('release_time', '<=', time())
             ->where('hot_item', 1)
             ->where('status',1)
             ->orderBy('order_item')
-            ->take(6 )->get();
+            ->take(5 )->get();
+
 //        $groupid = 1;
 //        $group = DB::table($this->db->group)->find($groupid);
 //        $list_articel_new = DB::table($this->db->news)
@@ -103,9 +114,11 @@ class IndexController extends Controller
 //            ->where('status',1)
 //            ->orderBy('order_main')->orderBy('release_time','desc')->take(10)->get();
 //        $data['list'] = $list_articel_new;
+
         $data = [
             "list" => $list,
             "list_news" => $list_news,
+            "trainings" => $trainings,
         ];
         return view('client.index.index', $data);
     }
@@ -131,7 +144,11 @@ class IndexController extends Controller
     public function listnews($slug){
         $groupIds = explode('--n-', $slug);
         $group = DB::table($this->db->group)->find($groupIds[1]);
-        $list_articel_new = DB::table($this->db->news)->where('groupid', $group->id)->where('status',1)->orderBy('order_main')->orderBy('release_time','desc')->take(10)->get();
+        $list_articel_new = DB::table($this->db->news)
+            ->where('groupid', $group->id)
+            ->where('status',1)
+            ->orderBy('order_main')->orderBy('release_time','desc')
+            ->paginate(12);
         $data = [
             "list" => $list_articel_new,
             "group" => $group
@@ -153,17 +170,13 @@ class IndexController extends Controller
         $gr_childs = Groupvn::where('parentid', $new->groupid)->get();
         count($gr_childs) == 0 ?  $gr_childs = Groupvn::where('parentid', $group->parentid )->get() : '' ;
 
-//        $banner = Banner::where('group_id', $new->groupid)->inRandomOrder()->first();
-//        Session::get('lang','vn') == 'vn' ? $home_id = 1574 : $home_id = 1405 ;
-//        if ($banner == null){
-//            $banner =  Banner::where('group_id', 1574)->inRandomOrder()->first();
-//        }
         $content = DB::table($this->db->logfile)->where('LogId',$id)->whereNotNull('noidung')->where('noidung','!=','')
             ->orderByDesc
             ('id')->first();
         Session::get('lang','vn') == 'vn' ? $news_id = 1569 : $news_id = 1409 ;
         $group_news = Groupvn::where('parentid', $news_id)->get(['id'])->toArray();
         $group_news = array_column(json_decode(json_encode($group_news),true),'id');
+
         $latestpost = DB::table($this->db->news)->take(3)->orderBy('id', 'desc')->get();
         $breadcrumb = $this->getBreadcrumb($group, $breadcrumb = []);
 

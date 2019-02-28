@@ -286,7 +286,7 @@
                                     <div class="row form-group">
                                         <label class="col-sm-2">Đường dẫn bài viết</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="articel[link]" required value="{{$articel->link}}"
+                                            <input type="text" name="articel[link]" value="{{$articel->link}}"
                                                    class="form-control" placeholder="Đường dẫn bài viết">
                                         </div>
                                     </div>

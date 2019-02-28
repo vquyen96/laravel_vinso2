@@ -85,8 +85,8 @@
         <section class="section1 pt-100">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 text-center mb-3 txt40_20">
-                        <h1>News</h1>
+                    <div class="col-12 text-center mb-5 txt40_20">
+                        <h1>{{ $web_info->home_title_1 }}</h1>
                     </div>
                     @foreach( $list_news as $item)
                         <div class="col-md-4 col-sm-6 col-xs-1">
@@ -194,7 +194,7 @@
             </div>
         </section>
         <section class="section7 d-flex">
-            @foreach( $list_news as $index=>$item)
+            @foreach( $trainings as $index=>$item)
                 @if( $index < 5 )
                     <div class="section7Item" style="background: url('{{ asset('local/storage/app/article/resized500-'.$item->fimage) }}') no-repeat center /cover">
                         <div class="section7ItemHover">

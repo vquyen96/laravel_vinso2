@@ -37,22 +37,11 @@
                         </li>
                     </ul>
 
-
-                    {{--<a href="{{ asset('quality') }}" class="headerMainItem">--}}
-                        {{--qualiti--}}
-                    {{--</a>--}}
-                    {{--<a href="{{ asset('about') }}" class="headerMainItem">--}}
-                        {{--about vinso--}}
-                    {{--</a>--}}
-                    {{--<a href="{{ asset('document') }}" class="headerMainItem">--}}
-                        {{--document--}}
-                    {{--</a>--}}
-                    {{--<a href="{{ asset('news') }}" class="headerMainItem">--}}
-                        {{--news--}}
-                    {{--</a>--}}
-
                 </div>
             </div>
         </div>
     </div>
 </header>
+<div class="btn-menu">
+    <i class="fas fa-bars"></i>
+</div>
