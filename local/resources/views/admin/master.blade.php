@@ -7,7 +7,7 @@
   <base href="{{ asset('local/resources/assets/admin') }}/">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="shortcut icon" href="../images/icon.png" />
-  <title>VNHN | @yield('title')</title>
+  <title>Vinso | @yield('title')</title>
 
   <link rel="stylesheet" type="text/css" href="../css/all.css">
   <!-- Font Awesome Icons -->

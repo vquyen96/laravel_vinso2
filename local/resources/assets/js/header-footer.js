@@ -54,7 +54,10 @@ $(document).ready(function(){
         setTimeout(function(){
            
         }, 500)
-        
+    });
+
+    $(document).on('click', '.btn-menu', function() {
+        $('header').slideToggle();
     });
 });
 var url = $('.currentUrl').text();
